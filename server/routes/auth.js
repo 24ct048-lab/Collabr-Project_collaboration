@@ -26,7 +26,7 @@ function register(req, res) {
         })
         .then(function(savedUser) {
             const token = jwt.sign(
-                { userId: savedUser._id, email: savedUser.email, name: savedUser.name },
+                { userId: String(savedUser._id), email: savedUser.email, name: savedUser.name },
                 process.env.JWT_SECRET,
                 { expiresIn: '7d' }
             );
@@ -34,7 +34,7 @@ function register(req, res) {
             return res.status(201).json({
                 token: token,
                 user: {
-                    id: savedUser._id,
+                    id: String(savedUser._id),
                     name: savedUser.name,
                     email: savedUser.email
                 }
@@ -69,7 +69,7 @@ function login(req, res) {
                     }
 
                     const token = jwt.sign(
-                        { userId: user._id, email: user.email, name: user.name },
+                        { userId: String(user._id), email: user.email, name: user.name },
                         process.env.JWT_SECRET,
                         { expiresIn: '7d' }
                     );
@@ -77,7 +77,7 @@ function login(req, res) {
                     return res.json({
                         token: token,
                         user: {
-                            id: user._id,
+                            id: String(user._id),
                             name: user.name,
                             email: user.email
                         }

@@ -17,6 +17,11 @@ const questionSchema = new mongoose.Schema(
             required: true,
             trim: true
         },
+        answer: {
+            type: String,
+            default: '',
+            trim: true
+        },
         timestamp: {
             type: Date,
             default: Date.now

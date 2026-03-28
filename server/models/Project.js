@@ -20,6 +20,15 @@ const projectSchema = new mongoose.Schema(
             type: [String],
             default: []
         },
+        imageUrl: {
+            type: String,
+            default: ''
+        },
+        groupLink: {
+            type: String,
+            default: '',
+            trim: true
+        },
         status: {
             type: String,
             enum: ['open', 'closed'],

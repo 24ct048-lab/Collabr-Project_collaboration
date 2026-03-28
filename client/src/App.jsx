@@ -5,11 +5,12 @@ import AuthPage from './pages/AuthPage';
 import FeedPage from './pages/FeedPage';
 import DashboardPage from './pages/DashboardPage';
 import ProjectDetailPage from './pages/ProjectDetailPage';
+import IdeasPage from './pages/IdeasPage';
 
 function App() {
   return (
     <BrowserRouter>
-      <div className="min-h-screen bg-gray-50">
+      <div style={{ minHeight: '100vh', background: 'var(--surface)' }}>
         <Navbar />
         <Routes>
           <Route path="/auth" element={<AuthPage />} />
@@ -34,6 +35,14 @@ function App() {
             element={
               <ProtectedRoute>
                 <ProjectDetailPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/ideas"
+            element={
+              <ProtectedRoute>
+                <IdeasPage />
               </ProtectedRoute>
             }
           />

@@ -33,6 +33,8 @@ function createProject(req, res) {
     const title = req.body.title;
     const description = req.body.description;
     const techStack = req.body.techStack;
+    const imageUrl = req.body.imageUrl;
+    const groupLink = req.body.groupLink;
 
     if (!title || !description) {
         return res.status(400).json({ error: 'Title and description are required' });
@@ -42,7 +44,9 @@ function createProject(req, res) {
         creatorId: userId,
         title: title,
         description: description,
-        techStack: techStack || []
+        techStack: techStack || [],
+        imageUrl: imageUrl || '',
+        groupLink: typeof groupLink === 'string' ? groupLink.trim() : ''
     });
 
     newProject.save()
@@ -81,6 +85,56 @@ function getProjectById(req, res) {
         });
 }
 
+function updateProjectDetails(req, res) {
+    const userId = req.user.userId;
+    const projectId = req.params.id;
+    const body = req.body;
+
+    Project.findOne({ _id: projectId, creatorId: userId })
+        .then(function(project) {
+            if (!project) {
+                res.status(404).json({ error: 'Project not found or not authorized' });
+                return null;
+            }
+
+            if (body.title !== undefined) {
+                project.title = String(body.title).trim();
+            }
+            if (body.description !== undefined) {
+                project.description = String(body.description).trim();
+            }
+            if (body.techStack !== undefined) {
+                if (Array.isArray(body.techStack)) {
+                    project.techStack = body.techStack.map(function(t) { return String(t).trim(); }).filter(function(t) { return t.length > 0; });
+                } else if (typeof body.techStack === 'string') {
+                    project.techStack = body.techStack.split(',').map(function(t) { return t.trim(); }).filter(function(t) { return t.length > 0; });
+                }
+            }
+            if (body.imageUrl !== undefined) {
+                project.imageUrl = String(body.imageUrl).trim();
+            }
+            if (body.groupLink !== undefined) {
+                project.groupLink = String(body.groupLink).trim();
+            }
+
+            if (!project.title || !project.description) {
+                res.status(400).json({ error: 'Title and description cannot be empty' });
+                return null;
+            }
+
+            return project.save();
+        })
+        .then(function(updated) {
+            if (!updated) {
+                return;
+            }
+            return res.json(updated);
+        })
+        .catch(function(error) {
+            return res.status(500).json({ error: error.message });
+        });
+}
+
 function updateProjectStatus(req, res) {
     const userId = req.user.userId;
     const projectId = req.params.id;
@@ -109,7 +163,8 @@ function updateProjectStatus(req, res) {
 router.get('/feed', authMiddleware, getFeed);
 router.post('/', authMiddleware, createProject);
 router.get('/mine', authMiddleware, getMyProjects);
-router.get('/:id', authMiddleware, getProjectById);
 router.patch('/:id/status', authMiddleware, updateProjectStatus);
+router.patch('/:id', authMiddleware, updateProjectDetails);
+router.get('/:id', authMiddleware, getProjectById);
 
 module.exports = router;

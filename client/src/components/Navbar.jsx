@@ -1,13 +1,14 @@
 import { useAtomValue, useSetAtom } from 'jotai';
 import { userAtom } from '../atoms/userAtom';
 import { feedAtom } from '../atoms/feedAtom';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 
 function Navbar() {
   const user = useAtomValue(userAtom);
   const setUser = useSetAtom(userAtom);
   const setFeed = useSetAtom(feedAtom);
   const navigate = useNavigate();
+  const location = useLocation();
 
   function handleLogout() {
     localStorage.removeItem('collabr_token');
@@ -17,25 +18,140 @@ function Navbar() {
     navigate('/auth');
   }
 
+  function isActive(path) {
+    return location.pathname === path;
+  }
+
   return (
-    <nav className="bg-white border-b border-gray-200 px-6 py-3 flex items-center justify-between">
-      <Link to="/feed" className="text-xl font-bold text-indigo-600 tracking-tight">
+    <nav style={{
+      position: 'sticky',
+      top: 0,
+      zIndex: 100,
+      background: 'rgba(8, 9, 12, 0.8)',
+      backdropFilter: 'blur(24px)',
+      WebkitBackdropFilter: 'blur(24px)',
+      borderBottom: '1px solid rgba(184, 181, 255, 0.06)',
+      padding: '0 2rem',
+      height: '3.75rem',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+    }}>
+      {/* Logo */}
+      <Link to="/feed" style={{
+        fontFamily: "'Syne', sans-serif",
+        fontWeight: 800,
+        fontSize: '1.1875rem',
+        letterSpacing: '-0.04em',
+        color: 'var(--on-surface)',
+        textDecoration: 'none',
+        display: 'flex',
+        alignItems: 'center',
+        gap: '0.5rem',
+      }}>
+        <span style={{
+          display: 'inline-flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          width: '1.75rem',
+          height: '1.75rem',
+          background: 'linear-gradient(135deg, var(--primary) 0%, var(--primary-container) 100%)',
+          borderRadius: '0.5rem',
+          fontSize: '0.875rem',
+          boxShadow: '0 0 12px rgba(184, 181, 255, 0.3)',
+        }}>⚡</span>
         Collabr
       </Link>
 
       {user && (
-        <div className="flex items-center gap-6 text-sm font-medium text-gray-600">
-          <Link to="/feed" className="hover:text-indigo-600 transition-colors">
-            Feed
-          </Link>
-          <Link to="/dashboard" className="hover:text-indigo-600 transition-colors">
-            Dashboard
-          </Link>
-          <span className="text-gray-400">|</span>
-          <span className="text-gray-800">{user.name}</span>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.25rem' }}>
+          {[
+            { to: '/feed', label: 'Discover' },
+            { to: '/ideas', label: 'Ideas' },
+            { to: '/dashboard', label: 'Dashboard' },
+          ].map(function(item) {
+            const active = isActive(item.to);
+            return (
+              <Link
+                key={item.to}
+                to={item.to}
+                style={{
+                  position: 'relative',
+                  padding: '0.4375rem 0.875rem',
+                  borderRadius: '0.625rem',
+                  fontSize: '0.875rem',
+                  fontWeight: active ? 600 : 400,
+                  textDecoration: 'none',
+                  transition: 'all 0.2s ease',
+                  background: active ? 'rgba(184, 181, 255, 0.08)' : 'transparent',
+                  color: active ? 'var(--primary)' : 'var(--on-surface-variant)',
+                  boxShadow: active ? 'inset 0 0 0 1px rgba(184, 181, 255, 0.12)' : 'none',
+                }}
+              >
+                {item.label}
+                {active && (
+                  <span style={{
+                    position: 'absolute',
+                    bottom: '-1px',
+                    left: '0.875rem',
+                    right: '0.875rem',
+                    height: '2px',
+                    background: 'linear-gradient(90deg, var(--primary), var(--primary-container))',
+                    borderRadius: '99px',
+                  }} />
+                )}
+              </Link>
+            );
+          })}
+
+          <div style={{
+            width: '1px',
+            height: '1.25rem',
+            background: 'rgba(60,68,85,0.5)',
+            margin: '0 0.5rem',
+          }} />
+
+          <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '0.25rem',
+            padding: '0.25rem 0.625rem',
+            background: 'var(--surface-container)',
+            borderRadius: '2rem',
+            border: '1px solid var(--outline-variant)',
+          }}>
+            <span style={{
+              width: '1.5rem',
+              height: '1.5rem',
+              borderRadius: '50%',
+              background: 'linear-gradient(135deg, var(--primary-dim), var(--primary-container))',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              fontSize: '0.6875rem',
+              fontWeight: 700,
+              color: 'white',
+              flexShrink: 0,
+            }}>
+              {user.name ? user.name[0].toUpperCase() : '?'}
+            </span>
+            <span style={{
+              fontSize: '0.8125rem',
+              color: 'var(--on-surface-variant)',
+              fontWeight: 500,
+              maxWidth: '100px',
+              overflow: 'hidden',
+              textOverflow: 'ellipsis',
+              whiteSpace: 'nowrap',
+            }}>
+              {user.name}
+            </span>
+          </div>
+
           <button
             onClick={handleLogout}
-            className="text-red-500 hover:text-red-700 transition-colors"
+            className="btn-danger"
+            style={{ padding: '0.375rem 0.875rem', fontSize: '0.8125rem', marginLeft: '0.25rem' }}
           >
             Logout
           </button>

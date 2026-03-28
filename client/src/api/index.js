@@ -1,7 +1,8 @@
 import axios from 'axios';
 
+// Dev: Vite proxies /api → backend (see vite.config.js). Override with VITE_API_URL for production.
 const api = axios.create({
-  baseURL: 'http://localhost:5001/api'
+  baseURL: import.meta.env.VITE_API_URL || '/api',
 });
 
 api.interceptors.request.use(function(config) {
@@ -42,6 +43,10 @@ export function updateProjectStatus(id, status) {
   return api.patch('/projects/' + id + '/status', { status: status });
 }
 
+export function updateProject(id, data) {
+  return api.patch('/projects/' + id, data);
+}
+
 // --- Swipes ---
 export function recordSwipe(projectId, action) {
   return api.post('/swipes', { projectId: projectId, action: action });
@@ -52,8 +57,12 @@ export function getIncomingMatches() {
   return api.get('/matches/incoming');
 }
 
-export function acceptMatch(matchId) {
-  return api.post('/matches/' + matchId + '/accept');
+export function acceptMatch(matchId, payload) {
+  return api.post('/matches/' + matchId + '/accept', payload || {});
+}
+
+export function getMyApplications() {
+  return api.get('/matches/my-applications');
 }
 
 // --- Questions ---
@@ -63,6 +72,23 @@ export function getQuestions(projectId) {
 
 export function postQuestion(projectId, text) {
   return api.post('/questions/' + projectId, { text: text });
+}
+
+export function getUnansweredQuestions() {
+  return api.get('/questions/mine/unanswered');
+}
+
+export function answerQuestion(questionId, answer) {
+  return api.patch('/questions/' + questionId + '/answer', { answer: answer });
+}
+
+// --- Ideas ---
+export function getIdeas() {
+  return api.get('/ideas');
+}
+
+export function createIdea(data) {
+  return api.post('/ideas', data);
 }
 
 export default api;
