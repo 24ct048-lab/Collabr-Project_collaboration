@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url('https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
 @import "tailwindcss";
 
 :root {
@@ -59,13 +60,13 @@ html {
 body {
   background: var(--surface);
   color: var(--on-surface);
-  font-family: 'Outfit', system-ui, sans-serif;
+  font-family: 'Satoshi', system-ui, sans-serif;
   font-size: 1rem;
-  line-height: 1.6;
+  line-height: 1.65;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   min-height: 100vh;
-  /* Subtle noise texture for depth */
+  /* Ambient depth gradient */
   background-image: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(46, 31, 196, 0.08) 0%, transparent 60%);
 }
 
@@ -76,19 +77,20 @@ body {
 ::-webkit-scrollbar-thumb:hover { background: var(--primary-container); }
 
 /* ── Typography ───────────────────────────────────── */
-.display-xl  { font-family: 'Syne', sans-serif; font-size: 4.5rem;   font-weight: 800; letter-spacing: -0.05em; line-height: 1.0; }
-.display-lg  { font-family: 'Syne', sans-serif; font-size: 3.5rem;   font-weight: 800; letter-spacing: -0.04em; line-height: 1.05; }
-.display-md  { font-family: 'Syne', sans-serif; font-size: 2.25rem;  font-weight: 700; letter-spacing: -0.035em; line-height: 1.1; }
-.display-sm  { font-family: 'Syne', sans-serif; font-size: 1.75rem;  font-weight: 700; letter-spacing: -0.025em; line-height: 1.15; }
-.headline    { font-family: 'Syne', sans-serif; font-size: 1.375rem; font-weight: 600; letter-spacing: -0.02em; }
-.title-lg    { font-family: 'Syne', sans-serif; font-size: 1.125rem; font-weight: 600; letter-spacing: -0.01em; }
-.title-md    { font-size: 1.0625rem; font-weight: 600; }
-.body-lg     { font-size: 1.0625rem; font-weight: 400; line-height: 1.65; }
-.body-md     { font-size: 0.9375rem; font-weight: 400; line-height: 1.65; }
-.body-sm     { font-size: 0.8125rem; font-weight: 400; }
-.label-lg    { font-family: 'Outfit', sans-serif; font-size: 0.8125rem; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; }
+/* Fluid scale: clamp(min, preferred, max) */
+.display-xl  { font-family: 'Syne', sans-serif; font-size: clamp(2.5rem, 6vw, 4.5rem);  font-weight: 800; letter-spacing: -0.05em; line-height: 1.0; }
+.display-lg  { font-family: 'Syne', sans-serif; font-size: clamp(2rem, 5vw, 3.5rem);    font-weight: 800; letter-spacing: -0.045em; line-height: 1.05; }
+.display-md  { font-family: 'Syne', sans-serif; font-size: clamp(1.625rem, 3.5vw, 2.25rem); font-weight: 700; letter-spacing: -0.035em; line-height: 1.1; }
+.display-sm  { font-family: 'Syne', sans-serif; font-size: clamp(1.375rem, 2.5vw, 1.75rem);  font-weight: 700; letter-spacing: -0.025em; line-height: 1.15; }
+.headline    { font-family: 'Syne', sans-serif; font-size: clamp(1.125rem, 2vw, 1.375rem); font-weight: 600; letter-spacing: -0.02em; line-height: 1.25; }
+.title-lg    { font-family: 'Syne', sans-serif; font-size: clamp(1rem, 1.5vw, 1.125rem); font-weight: 600; letter-spacing: -0.01em; line-height: 1.35; }
+.title-md    { font-size: 1.0625rem; font-weight: 600; line-height: 1.4; }
+.body-lg     { font-size: clamp(0.9375rem, 1.2vw, 1.0625rem); font-weight: 400; line-height: 1.7; }
+.body-md     { font-size: clamp(0.875rem, 1vw, 0.9375rem); font-weight: 400; line-height: 1.7; }
+.body-sm     { font-size: 0.8125rem; font-weight: 400; line-height: 1.6; }
+.label-lg    { font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
 .label-md    { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.06em; color: var(--secondary); }
-.label-sm    { font-family: 'Outfit', sans-serif; font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
+.label-sm    { font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
 .mono        { font-family: 'JetBrains Mono', monospace; font-size: 0.8125rem; }
 
 /* ── Surface Utilities ────────────────────────────── */
@@ -314,13 +316,28 @@ body {
   from { transform: rotate(0deg); }
   to   { transform: rotate(360deg); }
 }
+@keyframes swipeLeft {
+  from { transform: translateX(0) rotate(0deg); opacity: 1; }
+  to   { transform: translateX(-120%) rotate(-20deg); opacity: 0; }
+}
+@keyframes swipeRight {
+  from { transform: translateX(0) rotate(0deg); opacity: 1; }
+  to   { transform: translateX(120%) rotate(20deg); opacity: 0; }
+}
+@keyframes cardReveal {
+  from { opacity: 0; transform: translateY(24px) scale(0.96); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
 
-.animate-fade-up   { animation: fadeUp 0.45s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
-.animate-fade-in   { animation: fadeIn 0.3s ease forwards; }
-.animate-scale-in  { animation: scaleIn 0.35s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
-.animate-slide-right { animation: slideInRight 0.35s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
-.animate-float     { animation: float 3s ease-in-out infinite; }
+.animate-fade-up    { animation: fadeUp 0.45s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+.animate-fade-in    { animation: fadeIn 0.3s ease forwards; }
+.animate-scale-in   { animation: scaleIn 0.35s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+.animate-slide-right{ animation: slideInRight 0.35s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+.animate-float      { animation: float 3s ease-in-out infinite; }
 .animate-pulse-ring { animation: pulse-ring 2s ease-out infinite; }
+.animate-swipe-left  { animation: swipeLeft 0.4s cubic-bezier(0.55, 0, 1, 0.45) forwards; }
+.animate-swipe-right { animation: swipeRight 0.4s cubic-bezier(0.55, 0, 1, 0.45) forwards; }
+.animate-card-reveal { animation: cardReveal 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
 
 /* Staggered animation delays */
 .delay-1 { animation-delay: 0.05s; }
