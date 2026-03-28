@@ -13,7 +13,7 @@ function ProjectCard({ project, onInterested, onPass, showActions }) {
       width: '100%',
       maxWidth: '480px',
       transition: 'box-shadow 0.25s ease, transform 0.25s ease',
-      border: '1px solid rgba(184, 181, 255, 0.04)',
+      border: '1px solid rgba(255, 77, 77, 0.04)',
     }}
     onMouseEnter={function(e) {
       e.currentTarget.style.boxShadow = 'var(--shadow-card-hover)';
@@ -74,7 +74,7 @@ function ProjectCard({ project, onInterested, onPass, showActions }) {
                   textTransform: 'uppercase',
                   padding: '0.25rem 0.5rem',
                   borderRadius: '0.325rem',
-                  border: '1px solid rgba(184, 181, 255, 0.15)',
+                  border: '1px solid rgba(255, 77, 77, 0.15)',
                 }}>
                   {tech}
                 </span>
@@ -98,7 +98,7 @@ function ProjectCard({ project, onInterested, onPass, showActions }) {
         <div style={{
           width: '100%',
           height: '80px',
-          background: 'linear-gradient(135deg, rgba(46, 31, 196, 0.2) 0%, rgba(184, 181, 255, 0.05) 100%)',
+          background: 'linear-gradient(135deg, rgba(255, 117, 89, 0.2) 0%, rgba(255, 77, 77, 0.05) 100%)',
           position: 'relative',
         }}>
           <div style={{
@@ -118,7 +118,7 @@ function ProjectCard({ project, onInterested, onPass, showActions }) {
         <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
           <div style={{ flex: 1, minWidth: 0 }}>
             <h2 style={{
-              fontFamily: "'Syne', sans-serif",
+              fontFamily: "'Cabinet Grotesk', sans-serif",
               fontSize: '1.125rem',
               fontWeight: 700,
               color: 'var(--on-surface)',

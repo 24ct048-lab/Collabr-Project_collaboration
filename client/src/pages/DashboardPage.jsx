@@ -153,7 +153,7 @@ function DashboardPage() {
         transform: 'translateX(-50%)',
         width: '800px',
         height: '400px',
-        background: 'radial-gradient(ellipse, rgba(46, 31, 196, 0.06) 0%, transparent 70%)',
+        background: 'radial-gradient(ellipse, rgba(255, 117, 89, 0.06) 0%, transparent 70%)',
         pointerEvents: 'none',
         zIndex: 0,
       }} />
@@ -189,7 +189,7 @@ function DashboardPage() {
             padding: '1.75rem',
             width: '100%',
             maxWidth: '400px',
-            border: '1px solid rgba(184,181,255,0.08)',
+            border: '1px solid rgba(255,77,77,0.08)',
             boxShadow: 'var(--shadow-float)',
           }}
           onClick={function(e) { e.stopPropagation(); }}
@@ -254,7 +254,7 @@ function DashboardPage() {
                 border: 'none',
                 background: active ? 'var(--surface-highest)' : 'transparent',
                 color: active ? 'var(--primary)' : 'var(--secondary)',
-                fontFamily: "'Outfit', sans-serif",
+                fontFamily: "'Satoshi', sans-serif",
                 fontWeight: active ? 600 : 400,
                 fontSize: '0.875rem',
                 cursor: 'pointer',
@@ -263,7 +263,7 @@ function DashboardPage() {
                 alignItems: 'center',
                 gap: '0.5rem',
                 whiteSpace: 'nowrap',
-                boxShadow: active ? 'inset 0 0 0 1px rgba(184,181,255,0.1)' : 'none',
+                boxShadow: active ? 'inset 0 0 0 1px rgba(255,77,77,0.1)' : 'none',
               }}
             >
               {tab.label}
@@ -317,7 +317,7 @@ function DashboardPage() {
                 display: 'flex',
                 flexDirection: 'column',
                 gap: '1.25rem',
-                border: '1px solid rgba(184, 181, 255, 0.06)',
+                border: '1px solid rgba(255, 77, 77, 0.06)',
                 boxShadow: 'var(--shadow-ambient)',
               }}
             >
@@ -430,7 +430,7 @@ function DashboardPage() {
                       background: 'var(--surface-container)',
                       borderRadius: '1.125rem',
                       overflow: 'hidden',
-                      border: '1px solid rgba(184, 181, 255, 0.04)',
+                      border: '1px solid rgba(255, 77, 77, 0.04)',
                       boxShadow: 'var(--shadow-ambient)',
                       display: 'flex',
                       flexDirection: 'column',
@@ -460,7 +460,7 @@ function DashboardPage() {
                     <div style={{ padding: '1.125rem 1.25rem', flex: 1, display: 'flex', flexDirection: 'column' }}>
                       <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', marginBottom: '0.5rem', gap: '0.75rem' }}>
                         <h3 style={{
-                          fontFamily: "'Syne', sans-serif",
+                          fontFamily: "'Cabinet Grotesk', sans-serif",
                           fontSize: '1rem',
                           fontWeight: 700,
                           color: 'var(--on-surface)',
@@ -520,7 +520,7 @@ function DashboardPage() {
                             borderRadius: '99px',
                             fontSize: '0.6875rem',
                             fontWeight: 600,
-                            fontFamily: "'Outfit', sans-serif",
+                            fontFamily: "'Satoshi', sans-serif",
                             border: 'none',
                             cursor: 'pointer',
                             background: project.status === 'open' ? 'var(--success-dim)' : 'var(--surface-high)',
@@ -568,7 +568,7 @@ function DashboardPage() {
                     background: 'var(--surface-container)',
                     borderRadius: '1rem',
                     padding: '1.375rem',
-                    border: '1px solid rgba(184,181,255,0.05)',
+                    border: '1px solid rgba(255,77,77,0.05)',
                     boxShadow: 'var(--shadow-ambient)',
                   }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.5rem' }}>
@@ -645,7 +645,7 @@ function DashboardPage() {
                         alignItems: 'flex-start',
                         justifyContent: 'space-between',
                         gap: '1.5rem',
-                        border: '1px solid rgba(184, 181, 255, 0.05)',
+                        border: '1px solid rgba(255, 77, 77, 0.05)',
                         boxShadow: 'var(--shadow-ambient)',
                       }}
                     >
@@ -784,7 +784,7 @@ function DashboardPage() {
                     alignItems: 'center',
                     justifyContent: 'space-between',
                     gap: '1rem',
-                    border: '1px solid rgba(184, 181, 255, 0.05)',
+                    border: '1px solid rgba(255, 77, 77, 0.05)',
                   }}>
                     <div>
                       <p className="title-md" style={{ color: 'var(--on-surface)', marginBottom: '0.25rem' }}>

@@ -55,21 +55,21 @@ function FeedPage() {
           width: '100px',
           height: '100px',
           borderRadius: '50%',
-          background: 'linear-gradient(135deg, rgba(184,181,255,0.12) 0%, rgba(46,31,196,0.12) 100%)',
-          border: '1px solid rgba(184,181,255,0.1)',
+          background: 'linear-gradient(135deg, var(--primary-glow) 0%, rgba(255,117,89,0.12) 100%)',
+          border: '1px solid rgba(255,77,77,0.1)',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
           fontSize: '2.75rem',
           marginBottom: '2rem',
-          boxShadow: '0 0 60px rgba(184,181,255,0.08)',
+          boxShadow: '0 0 60px rgba(255,77,77,0.08)',
         }}>🎉</div>
         <h2 style={{
-          fontFamily: "'Syne', sans-serif",
+          fontFamily: "'Cabinet Grotesk', sans-serif",
           fontSize: 'clamp(1.375rem, 2.5vw, 1.75rem)',
-          fontWeight: 700,
+          fontWeight: 800,
           color: 'var(--on-surface)',
-          letterSpacing: '-0.025em',
+          letterSpacing: '-0.01em',
           marginBottom: '0.75rem',
         }}>
           You've seen it all
@@ -92,10 +92,10 @@ function FeedPage() {
 
   /* Placeholder gradient when no image */
   const gradients = [
-    'linear-gradient(135deg, #1a1040 0%, #2e1fc4 60%, #0c0e12 100%)',
-    'linear-gradient(135deg, #0a2040 0%, #0d5c63 60%, #0c0e12 100%)',
-    'linear-gradient(135deg, #1a0b30 0%, #6b21a8 60%, #0c0e12 100%)',
-    'linear-gradient(135deg, #0b2a1e 0%, #065f46 60%, #0c0e12 100%)',
+    'linear-gradient(135deg, #2a0808 0%, #b32424 60%, var(--surface) 100%)',
+    'linear-gradient(135deg, #2b1104 0%, #d95e14 60%, var(--surface) 100%)',
+    'linear-gradient(135deg, #1c0919 0%, #a8216b 60%, var(--surface) 100%)',
+    'linear-gradient(135deg, #2a0808 0%, #8c1c1c 60%, var(--surface) 100%)',
   ];
   const placeholderGradient = gradients[feed.length % gradients.length];
 
@@ -154,7 +154,7 @@ function FeedPage() {
             borderRadius: '1.5rem',
             overflow: 'hidden',
             background: topProject.imageUrl ? 'var(--surface-high)' : placeholderGradient,
-            boxShadow: '0 24px 80px rgba(0,0,0,0.6), 0 4px 24px rgba(184,181,255,0.06)',
+            boxShadow: '0 24px 80px rgba(0,0,0,0.6), 0 4px 24px rgba(255,77,77,0.06)',
             cursor: 'grab',
             userSelect: 'none',
           }}
@@ -184,7 +184,7 @@ function FeedPage() {
               zIndex: 10,
               background: 'rgba(61, 214, 140, 0.95)',
               color: 'white',
-              fontFamily: "'Syne', sans-serif",
+              fontFamily: "'Cabinet Grotesk', sans-serif",
               fontWeight: 800,
               fontSize: '1.125rem',
               letterSpacing: '0.1em',
@@ -204,7 +204,7 @@ function FeedPage() {
               zIndex: 10,
               background: 'rgba(248, 113, 113, 0.95)',
               color: 'white',
-              fontFamily: "'Syne', sans-serif",
+              fontFamily: "'Cabinet Grotesk', sans-serif",
               fontWeight: 800,
               fontSize: '1.125rem',
               letterSpacing: '0.1em',
@@ -265,16 +265,16 @@ function FeedPage() {
                 {topProject.techStack.slice(0, 4).map(function(tech, i) {
                   return (
                     <span key={i} style={{
-                      background: 'rgba(184,181,255,0.12)',
+                      background: 'rgba(255,255,255,0.06)',
                       backdropFilter: 'blur(8px)',
-                      color: 'var(--primary)',
+                      color: 'var(--primary-container)',
                       fontSize: '0.625rem',
                       fontWeight: 700,
                       letterSpacing: '0.08em',
                       textTransform: 'uppercase',
                       padding: '0.25rem 0.5625rem',
                       borderRadius: '99px',
-                      border: '1px solid rgba(184,181,255,0.2)',
+                      border: '1px solid rgba(255,255,255,0.12)',
                     }}>
                       {tech}
                     </span>
@@ -297,14 +297,15 @@ function FeedPage() {
 
             {/* Title */}
             <h2 style={{
-              fontFamily: "'Syne', sans-serif",
-              fontSize: 'clamp(1.25rem, 3vw, 1.625rem)',
+              fontFamily: "'Cabinet Grotesk', sans-serif",
+              fontSize: 'clamp(1.25rem, 3vw, 1.5rem)',
               fontWeight: 800,
               color: 'white',
-              letterSpacing: '-0.025em',
-              lineHeight: 1.2,
+              letterSpacing: '-0.01em',
+              lineHeight: 1.35,
               marginBottom: '0.5rem',
               textShadow: '0 2px 12px rgba(0,0,0,0.3)',
+              wordBreak: 'break-word',
             }}>
               {topProject.title}
             </h2>
@@ -339,14 +340,15 @@ function FeedPage() {
 
             {/* Description preview */}
             <p style={{
-              color: 'rgba(255,255,255,0.65)',
-              fontSize: '0.875rem',
-              lineHeight: 1.55,
+              color: 'rgba(255,255,255,0.72)',
+              fontSize: '0.8125rem',
+              lineHeight: 1.7,
               display: '-webkit-box',
               WebkitLineClamp: 2,
               WebkitBoxOrient: 'vertical',
               overflow: 'hidden',
               marginBottom: '1rem',
+              letterSpacing: '0.005em',
             }}>
               {topProject.description}
             </p>
@@ -448,8 +450,8 @@ function FeedPage() {
             onMouseEnter={function(e) {
               e.currentTarget.style.background = 'var(--surface-high)';
               e.currentTarget.style.transform = 'scale(1.08)';
-              e.currentTarget.style.color = 'var(--primary-dim)';
-              e.currentTarget.style.borderColor = 'rgba(184,181,255,0.3)';
+              e.currentTarget.style.color = 'var(--primary)';
+              e.currentTarget.style.borderColor = 'rgba(255,77,77,0.3)';
             }}
             onMouseLeave={function(e) {
               e.currentTarget.style.background = 'var(--surface-container)';
@@ -476,7 +478,7 @@ function FeedPage() {
               width: '62px',
               height: '62px',
               borderRadius: '50%',
-              background: 'linear-gradient(135deg, #b8b5ff 0%, #2e1fc4 100%)',
+              background: 'linear-gradient(135deg, var(--primary) 0%, var(--primary-container) 100%)',
               border: 'none',
               cursor: 'pointer',
               display: 'flex',
@@ -484,16 +486,16 @@ function FeedPage() {
               justifyContent: 'center',
               fontSize: '1.5rem',
               color: 'white',
-              boxShadow: '0 8px 32px rgba(46,31,196,0.5)',
+              boxShadow: '0 8px 32px rgba(255,77,77,0.35)',
               transition: 'all 0.2s ease',
             }}
             onMouseEnter={function(e) {
               e.currentTarget.style.transform = 'scale(1.12)';
-              e.currentTarget.style.boxShadow = '0 12px 40px rgba(46,31,196,0.7)';
+              e.currentTarget.style.boxShadow = '0 12px 40px rgba(255,77,77,0.5)';
             }}
             onMouseLeave={function(e) {
               e.currentTarget.style.transform = 'scale(1)';
-              e.currentTarget.style.boxShadow = '0 8px 32px rgba(46,31,196,0.5)';
+              e.currentTarget.style.boxShadow = '0 8px 32px rgba(255,77,77,0.35)';
             }}
           >
             ⚡

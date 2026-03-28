@@ -71,7 +71,7 @@ function AuthPage() {
         transform: 'translateX(-50%)',
         width: '600px',
         height: '400px',
-        background: 'radial-gradient(ellipse, rgba(46, 31, 196, 0.15) 0%, transparent 70%)',
+        background: 'radial-gradient(ellipse, rgba(255, 117, 89, 0.15) 0%, transparent 70%)',
         pointerEvents: 'none',
       }} />
       <div style={{
@@ -80,7 +80,7 @@ function AuthPage() {
         right: '10%',
         width: '300px',
         height: '300px',
-        background: 'radial-gradient(ellipse, rgba(184, 181, 255, 0.05) 0%, transparent 70%)',
+        background: 'radial-gradient(ellipse, rgba(255, 77, 77, 0.05) 0%, transparent 70%)',
         pointerEvents: 'none',
       }} />
 
@@ -93,7 +93,7 @@ function AuthPage() {
         width: '100%',
         maxWidth: '420px',
         boxShadow: 'var(--shadow-float)',
-        border: '1px solid rgba(184, 181, 255, 0.06)',
+        border: '1px solid rgba(255, 77, 77, 0.06)',
       }}>
         {/* Logo + header */}
         <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
@@ -107,10 +107,10 @@ function AuthPage() {
             borderRadius: '0.875rem',
             fontSize: '1.375rem',
             marginBottom: '1rem',
-            boxShadow: '0 8px 24px rgba(46, 31, 196, 0.4)',
+            boxShadow: '0 8px 24px rgba(255, 77, 77, 0.4)',
           }}>⚡</div>
           <h1 style={{
-            fontFamily: "'Syne', sans-serif",
+            fontFamily: "'Cabinet Grotesk', sans-serif",
             fontSize: '2rem',
             fontWeight: 800,
             color: 'var(--on-surface)',
@@ -151,12 +151,12 @@ function AuthPage() {
                     ? 'linear-gradient(135deg, var(--primary), var(--primary-container))'
                     : 'transparent',
                   color: active ? 'white' : 'var(--secondary)',
-                  fontFamily: "'Outfit', sans-serif",
+                  fontFamily: "'Satoshi', sans-serif",
                   fontWeight: 600,
                   fontSize: '0.875rem',
                   cursor: 'pointer',
                   transition: 'background 0.25s, color 0.25s, box-shadow 0.25s',
-                  boxShadow: active ? '0 4px 12px rgba(46,31,196,0.35)' : 'none',
+                  boxShadow: active ? '0 4px 12px rgba(255,77,77,0.35)' : 'none',
                   letterSpacing: '0.01em',
                 }}
               >

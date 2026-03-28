@@ -30,7 +30,7 @@ function Navbar() {
       background: 'rgba(8, 9, 12, 0.8)',
       backdropFilter: 'blur(24px)',
       WebkitBackdropFilter: 'blur(24px)',
-      borderBottom: '1px solid rgba(184, 181, 255, 0.06)',
+      borderBottom: '1px solid rgba(255, 77, 77, 0.06)',
       padding: '0 2rem',
       height: '3.75rem',
       display: 'flex',
@@ -39,7 +39,7 @@ function Navbar() {
     }}>
       {/* Logo */}
       <Link to="/feed" style={{
-        fontFamily: "'Syne', sans-serif",
+        fontFamily: "'Cabinet Grotesk', sans-serif",
         fontWeight: 800,
         fontSize: '1.1875rem',
         letterSpacing: '-0.04em',
@@ -58,7 +58,7 @@ function Navbar() {
           background: 'linear-gradient(135deg, var(--primary) 0%, var(--primary-container) 100%)',
           borderRadius: '0.5rem',
           fontSize: '0.875rem',
-          boxShadow: '0 0 12px rgba(184, 181, 255, 0.3)',
+          boxShadow: '0 0 12px rgba(255, 77, 77, 0.3)',
         }}>⚡</span>
         Collabr
       </Link>
@@ -83,9 +83,9 @@ function Navbar() {
                   fontWeight: active ? 600 : 400,
                   textDecoration: 'none',
                   transition: 'all 0.2s ease',
-                  background: active ? 'rgba(184, 181, 255, 0.08)' : 'transparent',
+                  background: active ? 'rgba(255, 77, 77, 0.08)' : 'transparent',
                   color: active ? 'var(--primary)' : 'var(--on-surface-variant)',
-                  boxShadow: active ? 'inset 0 0 0 1px rgba(184, 181, 255, 0.12)' : 'none',
+                  boxShadow: active ? 'inset 0 0 0 1px rgba(255, 77, 77, 0.12)' : 'none',
                 }}
               >
                 {item.label}

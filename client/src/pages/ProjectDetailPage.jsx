@@ -121,7 +121,7 @@ function ProjectDetailPage() {
             right: '1.75rem',
           }}>
             <h1 style={{
-              fontFamily: "'Syne', sans-serif",
+              fontFamily: "'Cabinet Grotesk', sans-serif",
               fontSize: '1.75rem',
               fontWeight: 800,
               color: 'white',
@@ -150,7 +150,7 @@ function ProjectDetailPage() {
         borderRadius: '1.25rem',
         padding: '1.875rem',
         marginBottom: '1.5rem',
-        border: '1px solid rgba(184, 181, 255, 0.04)',
+        border: '1px solid rgba(255, 77, 77, 0.04)',
         boxShadow: 'var(--shadow-ambient)',
       }}>
         {/* Title row (shown when no image) */}
@@ -249,7 +249,7 @@ function ProjectDetailPage() {
         background: 'var(--surface-container)',
         borderRadius: '1.25rem',
         padding: '1.875rem',
-        border: '1px solid rgba(184, 181, 255, 0.04)',
+        border: '1px solid rgba(255, 77, 77, 0.04)',
         boxShadow: 'var(--shadow-ambient)',
       }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.5rem' }}>
@@ -264,13 +264,13 @@ function ProjectDetailPage() {
           </h2>
           {questions.length > 0 && (
             <span style={{
-              background: 'rgba(184, 181, 255, 0.1)',
+              background: 'rgba(255, 77, 77, 0.1)',
               color: 'var(--primary-dim)',
               fontSize: '0.75rem',
               fontWeight: 700,
               padding: '0.1875rem 0.5625rem',
               borderRadius: '99px',
-              border: '1px solid rgba(184, 181, 255, 0.15)',
+              border: '1px solid rgba(255, 77, 77, 0.15)',
             }}>
               {questions.length}
             </span>

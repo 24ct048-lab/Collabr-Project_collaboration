@@ -40,7 +40,7 @@ function IdeasPage() {
 
   /* Gradient accent colors for idea cards */
   const cardAccents = [
-    'rgba(184, 181, 255, 0.06)',
+    'rgba(255, 77, 77, 0.06)',
     'rgba(61, 214, 140, 0.05)',
     'rgba(251, 191, 36, 0.05)',
     'rgba(248, 113, 113, 0.05)',
@@ -59,7 +59,7 @@ function IdeasPage() {
           left: '-1rem',
           width: '300px',
           height: '200px',
-          background: 'radial-gradient(ellipse, rgba(46,31,196,0.1) 0%, transparent 70%)',
+          background: 'radial-gradient(ellipse, rgba(255, 117, 89, 0.1) 0%, transparent 70%)',
           pointerEvents: 'none',
         }} />
         <p className="label-sm" style={{ color: 'var(--secondary)', marginBottom: '0.625rem' }}>COLLABR STUDIO</p>
@@ -97,12 +97,12 @@ function IdeasPage() {
                 border: 'none',
                 background: active ? 'var(--surface-highest)' : 'transparent',
                 color: active ? 'var(--primary)' : 'var(--secondary)',
-                fontFamily: "'Outfit', sans-serif",
+                fontFamily: "'Satoshi', sans-serif",
                 fontWeight: active ? 600 : 400,
                 fontSize: '0.875rem',
                 cursor: 'pointer',
                 transition: 'all 0.2s ease',
-                boxShadow: active ? 'inset 0 0 0 1px rgba(184,181,255,0.1)' : 'none',
+                boxShadow: active ? 'inset 0 0 0 1px rgba(255,77,77,0.1)' : 'none',
               }}
             >
               {item.label}
@@ -127,7 +127,7 @@ function IdeasPage() {
         }}>
           <div style={{ marginBottom: '-0.5rem' }}>
             <h2 style={{
-              fontFamily: "'Syne', sans-serif",
+              fontFamily: "'Cabinet Grotesk', sans-serif",
               fontSize: '1.25rem',
               fontWeight: 700,
               color: 'var(--on-surface)',
@@ -266,7 +266,7 @@ function IdeasPage() {
                         borderRadius: '1rem',
                         padding: '1.375rem',
                         transition: 'all 0.25s ease',
-                        border: '1px solid rgba(184, 181, 255, 0.04)',
+                        border: '1px solid rgba(255, 77, 77, 0.04)',
                         cursor: 'default',
                         position: 'relative',
                         overflow: 'hidden',
