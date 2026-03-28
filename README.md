@@ -282,4 +282,3 @@ PORT=5000
 
 ---
 
-*Built with ❤️ as a DBMS project.*
