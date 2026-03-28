@@ -20,7 +20,7 @@
 ## Project Structure
 
 ```
-chrisproject/
+Collabr/
 ├── client/                 # React + Vite frontend
 │   └── src/
 │       ├── api/index.js    # Axios client + all API functions
